@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rabiess Surprise 💖</title>
+<style>
+/* General Styles */
+body{
+  margin:0;
+  font-family:'Segoe UI',sans-serif;
+  background-color:#ffd6e8;
+  text-align:center;
+  position:relative;
+  overflow-x:hidden;
+}
+h1,h2,p{margin:10px;}
+button{cursor:pointer;}
+/* Emoji Background */
+.emoji-bg{
+  position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:-1;
+}
+.emoji{
+  position:absolute;font-size:30px;animation:float 10s linear infinite;
+}
+@keyframes float{
+  0%{transform:translateY(100vh) rotate(0deg);}
+  100%{transform:translateY(-10vh) rotate(360deg);}
+}
+/* Pages */
+.page{
+  display:none;
+  padding:20px;
+  min-height:100vh;
+  box-sizing:border-box;
+}
+/* Letter Style */
+.letter{
+  background:#fff0f5;
+  padding:25px;
+  max-width:500px;
+  margin:20px auto;
+  border-radius:15px;
+  box-shadow:0 8px 15px rgba(0,0,0,0.2);
+  cursor:pointer;
+  transition:max-height 0.5s, transform 0.3s;
+  overflow:hidden;
+  max-height:80px;
+}
+.letter.open{
+  max-height:500px;
+  transform:scale(1.05);
+}
+.message{
+  font-size:18px;
+  color:#d63384;
+  margin-top:10px;
+  display:none;
+  line-height:1.5;
+}
+/* Gift Boxes */
+.gift-container{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:15px;
+  margin-top:20px;
+}
+.gift{
+  font-size:50px;
+  border:4px dashed #ff9ad6;
+  border-radius:15px;
+  width:100px;height:100px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background-color:#fff0f5;
+  cursor:pointer;
+  transition: transform 0.3s;
+}
+.gift.open{
+  transform:scale(1.5) rotate(10deg);
+}
+.video-wrap,.photo-wrap{
+  margin:20px auto;
+  padding:15px;
+  border:4px dashed #ff9ad6;
+  border-radius:15px;
+  max-width:500px;
+  background-color:#fff0f5;
+}
+.video-wrap video,.photo-wrap img{
+  width:100%;
+  border-radius:10px;
+  display:block;
+}
+.video-wrap p{
+  color:#d63384;
+  font-size:16px;
+  margin-top:5px;
+}
+/* Buttons */
+.nav-btn{
+  padding:10px 20px;
+  font-size:18px;
+  margin-top:10px;
+  border:none;
+  border-radius:10px;
+  background-color:#ff9ad6;
+  color:white;
+  transition:transform 0.2s;
+}
+.nav-btn:hover{transform:scale(1.1);}
+</style>
+</head>
+<body>
+
+<!-- Emoji Background -->
+<div class="emoji-bg">
+  <div class="emoji" style="left:10%; animation-duration:12s;">❤️</div>
+  <div class="emoji" style="left:25%; animation-duration:8s;">💖</div>
+  <div class="emoji" style="left:40%; animation-duration:15s;">👽</div>
+  <div class="emoji" style="left:60%; animation-duration:10s;">🌟</div>
+  <div class="emoji" style="left:75%; animation-duration:13s;">💌</div>
+  <div class="emoji" style="left:90%; animation-duration:9s;">🥰</div>
+</div>
+
+<!-- Music -->
+<audio id="song" src="song/yourSong.mp3" loop></audio>
+<button class="nav-btn" onclick="playPauseSong()">Play/Pause Music 🎵</button>
+
+<!-- Page 1 -->
+<div class="page" id="page1">
+  <h1>Hey Rabiesss 👽</h1>
+  <p>I made something for you 💖</p>
+  <button class="nav-btn" onclick="nextPage()">Next</button>
+</div>
+
+<!-- Page 2 -->
+<div class="page" id="page2">
+  <h2>Apne dosto ko sath dikha</h2>
+  <p>Favleen and Nunu 💕</p>
+  <button class="nav-btn" onclick="nextPage()">Next</button>
+</div>
+
+<!-- Pages 3–6: Letters -->
+<div class="page" id="page3">
+  <div class="letter" onclick="openLetter(this)">
+    Tap to open Letter 1
+    <div class="message">
+      💌 Hey baby,<br>
+      Tumhari hasi meri favorite sound hai 😘<br>
+      Being with you feels like magic moments 💖<br>
+      Hope you always smile like this 🌸
+    </div>
+  </div>
+  <button class="nav-btn" onclick="nextPage()">Next</button>
+</div>
+
+<div class="page" id="page4">
+  <div class="letter" onclick="openLetter(this)">
+    Tap to open Letter 2
+    <div class="message">
+      💌 Tumhari choti choti baatein mujhe hamesha smile karwati hain 💕<br>
+      I love your little gestures 😏<br>
+      You make every moment so cute and fun 🌟
+    </div>
+  </div>
+  <button class="nav-btn" onclick="nextPage()">Next</button>
+</div>
+
+<div class="page" id="page5">
+  <div class="letter" onclick="openLetter(this)">
+    Tap to open Letter 3
+    <div class="message">
+      💌 Baby, I love how you tease me sometimes 😘<br>
+      Tumhare saath time flies 💖<br>
+      Can’t stop thinking about you 💌
+    </div>
+  </div>
+  <button class="nav-btn" onclick="nextPage()">Next</button>
+</div>
+
+<div class="page" id="page6">
+  <div class="letter" onclick="openLetter(this)">
+    Tap to open Letter 4
+    <div class="message">
+      💌 Tum meri life mein little sunshine ho 🌞<br>
+      You make my day brighter 💖<br>
+      Always stay happy baby 💕
+    </div>
+  </div>
+  <button class="nav-btn" onclick="nextPage()">Next</button>
+</div>
+
+<!-- Page 7: 4 Gift Boxes -->
+<div class="page" id="page7">
+  <h2>Special Gifts 🎁</h2>
+  <div class="gift-container">
+    <div class="gift" onclick="openGift('video1','💖 For you, my love!')">🎁</div>
+    <div class="gift" onclick="openGift('video2','🥰 Hope this makes you smile!')">🎁</div>
+    <div class="gift" onclick="openGift('video3','💌 A little surprise for you!')">🎁</div>
+    <div class="gift" onclick="openGift('video4','🌸 Last gift, just for you!')">🎁</div>
+  </div>
+  <div id="video1" class="video-wrap" style="display:none;">
+    <video controls playsinline><source src="videos/video1.mp4" type="video/mp4"></video>
+    <p class="video-msg"></p>
+  </div>
+  <div id="video2" class="video-wrap" style="display:none;">
+    <video controls playsinline><source src="videos/video2.mp4" type="video/mp4"></video>
+    <p class="video-msg"></p>
+  </div>
+  <div id="video3" class="video-wrap" style="display:none;">
+    <video controls playsinline><source src="videos/video3.mp4" type="video/mp4"></video>
+    <p class="video-msg"></p>
+  </div>
+  <div id="video4" class="video-wrap" style="display:none;">
+    <video controls playsinline><source src="videos/video4.mp4" type="video/mp4"></video>
+    <p class="video-msg"></p>
+  </div>
+  <button class="nav-btn" onclick="nextPage()">Next</button>
+</div>
+
+<!-- Page 8: Final gift -->
+<div class="page" id="page8">
+  <h2>Final Surprise 💖</h2>
+  <div id="giftWrap" class="gift" style="margin:20px auto;font-size:80px;" onclick="openFinalGift()">🎁</div>
+  <div id="hearts-container"></div>
+  <div class="photo-wrap" id="finalPhotoWrap" style="display:none;">
+    <img src="photo/kiss.jpg" alt="Kiss Photo">
+    <p style="font-size:20px;color:#d63384;">I love you Rabia 💌</p>
+  </div>
+  <button class="nav-btn" onclick="nextPage()">Next</button>
+</div>
+
+<!-- Page 9: Paragraph (Hindi-English cute) -->
+<div class="page" id="page9">
+  <div class="letter" onclick="openLetter(this)">
+    Tap to open my special note 💌
+    <div class="message">
+      💖 Hey Rabiesss,<br>
+      You make my heart skip every time I see you.<br>
+      Tumhari hasi meri favorite sound hai 😘<br>
+      Being with you feels like little magic moments 💖<br>
+      Tumhare saath har moment fun aur cute lagta hai.<br>
+      I love how you tease me sometimes 😏<br>
+      Tumhari choti choti baatein mujhe hamesha smile karwati hain.<br>
+      Every little thing about you is adorable.<br>
+      Hope we keep making fun memories together 💕<br>
+      😘 Love, Harsimar
+    </div>
+  </div>
+  <button class="nav-btn" onclick="nextPage()">Next</button>
+</div>
+
+<!-- Page 10 -->
+<div class="page" id="page10">
+  <h2>Favleen do the honours 💕</h2>
+  <button class="nav-btn" onclick="nextPage()">Next</button>
+</div>
+
+<!-- Page 11 -->
+<div class="page" id="page11">
+  <h2>Enjoy the magic ✨</h2>
+</div>
+
+<script>
+// Page navigation
+let currentPage = 1;
+showPage(currentPage);
+function showPage(num){
+  document.querySelectorAll('.page').forEach(p=>p.style.display='none');
+  document.getElementById('page'+num).style.display='block';
+}
+function nextPage(){currentPage++; showPage(currentPage);}
+
+// Play/pause music
+function playPauseSong(){
+  let song=document.getElementById('song');
+  if(song.paused) song.play();
+  else song.pause();
+}
+
+// Typewriter for letters and paragraph
+function openLetter(el){
+  if(el.classList.contains('open')) return;
+  el.classList.add('open');
+  let msg=el.querySelector('.message');
+  msg.style.display='block';
+  let html=msg.innerHTML;
+  msg.innerHTML='';
+  let i=0;
+  let interval=setInterval(()=>{
+    if(i<html.length){
+      msg.innerHTML+=html.charAt(i);
+      i++;
+    }else clearInterval(interval);
+  },30);
+}
+
+// Gift boxes open
+function openGift(id,msg){
+  document.querySelectorAll('.video-wrap').forEach(v=>v.style.display='none');
+  document.querySelectorAll('.gift').forEach(g=>g.classList.remove('open'));
+  let video=document.getElementById(id);
+  video.style.display='block';
+  video.previousElementSibling.classList.add('open');
+  video.querySelector('.video-msg').innerText=msg;
+}
+
+// Final gift with hearts
+function openFinalGift(){
+  let gift=document.getElementById('giftWrap');
+  gift.style.display='none';
+  let heartsContainer=document.getElementById('hearts-container');
+  let colors=['#ff6b81','#ffb347','#ff9ad6','#ff69b4','#ffd700'];
+  for(let i=0;i<30;i++){
+    let heart=document.createElement('div');
+    heart.innerText='💖';
+    heart.style.position='absolute';
+    heart.style.fontSize=Math.random()*30+20+'px';
+    heart.style.color=colors[Math.floor(Math.random()*colors.length)];
+    heart.style.left=Math.random()*90+'%';
+    heart.style.top=Math.random()*90+'%';
+    heart.style.animation='float 5s linear infinite';
+    heartsContainer.appendChild(heart);
+  }
+  document.getElementById('finalPhotoWrap').style.display='block';
+}
+</script>
+</body>
+</html>
